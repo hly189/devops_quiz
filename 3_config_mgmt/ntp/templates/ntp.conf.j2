@@ -1,0 +1,25 @@
+# /etc/ntp.conf
+
+driftfile {{ driftfile }}
+
+# Enable this if you want statistics to be logged.
+#statsdir /var/log/ntpstats/
+
+{% for i in ntp_filegen %}
+{{ i }}
+{% endfor %}
+
+# Specify one or more NTP servers.
+{% for i in list_servers %}
+server {{ i }}.ubuntu.pool.ntp.org
+{% endfor %}
+
+# Use Ubuntu's ntp server as a fallback
+server {{ ubuntu_npt_server }}
+
+# By default, exchange time with everybody, but don't allow configuration.
+{% for i in restriction %}
+restrict {{ i }} 
+{% endfor %}
+
+

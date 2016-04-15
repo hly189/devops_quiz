@@ -1,0 +1,19 @@
+---
+- name: Install ntp
+  sudo: yes
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+      - ntp
+
+- name: Generate ntp.conf to /etc/ntp.conf
+  sudo: yes
+  template: src={{item.src}} dest={{item.dest}}
+  with_items:
+  - { src: 'ntp.conf.j2', dest: '/etc/ntp.conf' }
+  notify: 
+  - restart ntp
+
+- name: Start and ensure that ntpd is running
+  sudo: yes
+  service: name=ntp enabled=true state=started
+

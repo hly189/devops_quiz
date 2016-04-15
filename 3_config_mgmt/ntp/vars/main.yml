@@ -1,0 +1,14 @@
+---
+driftfile: /var/lib/ntp/ntp.drift
+list_servers: [0,1,2,3]
+ntp_filegen: 
+- 'statistics loopstats peerstats clockstats'
+- 'filegen loopstats file loopstats type day enable'
+- 'filegen peerstats file peerstats type day enable'
+- 'filegen clockstats file clockstats type day enable'
+ubuntu_npt_server: ntp.ubuntu.com
+restriction:
+- '-4 default kod notrap nomodify nopeer noquery'
+- '-6 default kod notrap nomodify nopeer noquery'
+- '127.0.0.1'
+- '::1'
