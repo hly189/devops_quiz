@@ -4,3 +4,8 @@
 # and makes sure the ntpd process is running.
 #
 # Bonus make sure the policy works on more than just Ubuntu 14.04
+
+# If you want to test Vagrant. Please run
+
+# - vagrant up
+# 0 ansible-playboook ntp.yml
