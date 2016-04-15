@@ -8,4 +8,4 @@
 # If you want to test Vagrant. Please run
 
 # - vagrant up
-# 0 ansible-playboook ntp.yml
+# - ansible-playboook ntp.yml
